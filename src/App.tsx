@@ -1,25 +1,23 @@
 import React from 'react'
-import {useMutation} from '@apollo/client'
-import {MUTATION_LOGIN} from './graphql/mutations'
+import styles from './App.module.css'
+import {Route, Routes} from 'react-router-dom'
+import {LoginPage} from './components/pages/login'
+import {RequireAuth} from './components/utils/require-auth'
+import {DashboardPage} from './components/pages/dashboard'
 
 function App() {
 
-  const [login, {data, loading, error}] = useMutation(MUTATION_LOGIN)
-
-  if(loading) return <div>loading</div>
-  if(error) return <div>error!</div>
-
-  console.log(data)
-
-  const handleLoginButtonClick = () => {
-    login({variables: {username: 'Alan', password: 'Walker'}})
-  }
-
   return (
-    <div className="wrapper">
-      <button onClick={handleLoginButtonClick}>Нажми</button>
+    <div className={styles.wrapper}>
+      <Routes>
+        <Route path={'/login'} element={<LoginPage/>}/>
+        <Route element={<RequireAuth/>}>
+          <Route path={'/'} element={<DashboardPage/>}/>
+          <Route path={'/dashboard'} element={<DashboardPage/>}/>
+        </Route>
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

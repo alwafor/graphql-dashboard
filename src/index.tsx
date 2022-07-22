@@ -5,18 +5,18 @@ import './assets/styles/reset.css'
 import './assets/styles/global.css'
 
 import App from './App'
-import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client'
-
-const client = new ApolloClient({
-  uri: 'https://gravitel-graphql-backend.herokuapp.com/',
-  cache: new InMemoryCache(),
-});
+import {ApolloProvider} from '@apollo/client'
+import {BrowserRouter} from 'react-router-dom'
+import {client} from './graphql/client'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 )
+
 root.render(
-  <ApolloProvider client={client}>
-    <App/>
-  </ApolloProvider>
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <App/>
+    </ApolloProvider>
+  </BrowserRouter>
 )
