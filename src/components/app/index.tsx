@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './index.module.css'
 
-import {Route, Routes} from 'react-router-dom'
+import {Navigate, Route, Routes} from 'react-router-dom'
 import {RequireAuth} from '../utils/require-auth'
 
 import {LoginPage} from '../pages/login'
@@ -16,6 +16,7 @@ const App: React.FC = () => {
           <Route path={'/'} element={<DashboardPage/>}/>
           <Route path={'/dashboard'} element={<DashboardPage/>}/>
         </Route>
+        <Route path={'*'} element={<Navigate to={'/dashboard'}/>}/>
       </Routes>
     </div>
   )
