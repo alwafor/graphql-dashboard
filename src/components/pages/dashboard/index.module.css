@@ -6,6 +6,10 @@
   justify-content: center;
 }
 
+.root.full {
+  min-height: 100vh;
+}
+
 .diagrams {
   width: 100%;
   display: flex;

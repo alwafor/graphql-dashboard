@@ -18,14 +18,10 @@ export const LoginPage: React.FC = () => {
   const [inputLoginValue, setInputLoginValue] = useState('')
   const [inputPasswordValue, setInputPasswordValue] = useState('')
 
-  if (loadingMe) {
-    return <div className={styles.wrapper}>Загрузка...</div>
-  }
+  if (loadingMe) return <div className={styles.wrapper}>Загрузка...</div>
 
   // Если пользователь уже авторизован - переходим на основную страницу
-  if (dataMe) {
-    return <Navigate to={'/dashboard'} replace/>
-  }
+  if (dataMe) return <Navigate to={'/dashboard'} replace/>
 
   // Авторизация успешна - записываем токен и перенаправляем на dashboard страницу
   if (dataLogin) {
