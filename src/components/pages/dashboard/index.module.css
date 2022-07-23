@@ -1,0 +1,7 @@
+.diagrams {
+  display: flex;
+}
+
+.diagrams > * {
+  flex: 1 0 33.3333%;
+}

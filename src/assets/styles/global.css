@@ -4,10 +4,22 @@ html, body {
 
 body {
   font-family: 'Roboto', sans-serif;
-
+  font-size: 16px;
   padding: 0 15px;
 }
 
 * {
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --color-primary: #fdd07c;
+  --color-primary-dark: #f9a752;
+
+  --color-secondary: #d0cbd6;
+  --color-secondary-light: #f2f0f5;
+  --color-secondary-dark: #b9b1c0;
+
+  --color-danger: #dc3545;
 }
