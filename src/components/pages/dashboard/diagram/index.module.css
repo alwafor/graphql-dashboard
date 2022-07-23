@@ -1,87 +1,4 @@
 .root {
-
-}
-
-/*.root:hover .circle svg .cActive {*/
-
-/*}*/
-
-.circle {
-  position: relative;
-  width: 150px;
-  height: 150px;
-}
-
-.circle svg {
-  position: relative;
-  width: 150px;
-  height: 150px;
-
-  /*transform: rotateZ(270deg) scaleY(-1);*/
-}
-
-.circle svg circle {
-
-  width: 150px;
-  height: 150px;
-  fill: none;
-  stroke-width: 10;
-  stroke: #000;
-  transform: translate(5px,5px);
-
-  stroke-dasharray: 440;
-  stroke-dashoffset: 440;
-  stroke-linecap: round;
-
-}
-
-.circle svg circle.cActive {
-  stroke-dashoffset: calc(440 + (440 * 10 / 100));
-  stroke: var(--color-secondary);
-}
-
-.circle svg circle.cActive:hover {
-  stroke: var(--color-primary);
-}
-
-.circle svg circle.cInactive {
-  stroke-dashoffset: calc(440 + (440 * 25 / 100));
-  stroke: var(--color-secondary);
-}
-
-.circle svg circle.cCompleted {
-  stroke-dashoffset: calc(440 + (440 * 100 / 100));;
-  stroke: var(--color-secondary-light);
-}
-
-.circle .circleInner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.circle .circleInner h2 {
-  font-size: 48px;
-}
-
-.cActive {
-
-}
-.cInactive {
-
-}
-.cCompleted {
-
-}
-
-/*TEST ROOT*/
-.testRoot {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,8 +8,8 @@
 .chartRoot {
   position: relative;
   
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
 }
 
 .chartRoot svg {
@@ -101,26 +18,38 @@
 
 .chartRoot svg .unit {
   fill: none;
-  stroke-width: 2.5;
+  stroke-width: 2;
   stroke-linecap: round;
 
   transition: all .1s linear;
 }
-.chartRoot svg .unit:hover {
+
+.unit:hover {
   cursor: pointer;
+}
+
+.active {
+  stroke: var(--color-secondary-dark);
+}
+
+.active.hovered {
+  stroke: var(--color-primary-dark);
+}
+
+.inactive {
+  stroke: var(--color-secondary);
+}
+
+.inactive.hovered {
   stroke: var(--color-primary);
 }
 
-.unit:nth-child(1) {
-  stroke: #86cfa3;
+.completed {
+  stroke: var(--color-secondary-light);
 }
 
-.unit:nth-child(2) {
-  stroke: #a2c6e0;
-}
-
-.unit:nth-child(3) {
-  stroke: #ffc7ec;
+.completed.hovered {
+  stroke: var(--color-primary-light);
 }
 
 .chartInnerContent {
@@ -143,25 +72,29 @@
 
   font-weight: bold;
   font-size: 36px;
-  color: var(--color-primary-dark)
+  color: var(--color-primary-bright)
 }
 
 .legend {
-  width: 300px;
+  width: 250px;
 }
 
 .legendItem {
   width: 100%;
-  background-color: transparent;
-  border: 0;
 
   display: flex;
   justify-content: space-between;
+
+  font-size: 14px;
+
+  padding: 0;
 }
 
-.legendItem:hover {
+.legendItem:nth-child(2) {
+  padding: 10px 0;
+}
+
+.legendItem.hovered, .legendItemAll:hover {
   color: #9e59bc;
   text-decoration: underline;
-
-  cursor: pointer;
 }

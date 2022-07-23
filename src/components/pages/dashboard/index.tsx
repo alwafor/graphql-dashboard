@@ -1,27 +1,37 @@
 import React from 'react'
 import styles from './index.module.css'
 
-import {Diagram, TestDiagram} from './diagram'
+import {Diagram} from './diagram'
+import {useNavigate} from 'react-router-dom'
 import {useQuery} from '@apollo/client'
-import {QUERY_DASHBOARD} from '../../../graphql/queries'
+import {IQueryDashboard, QUERY_DASHBOARD} from '../../../graphql/queries'
 
-interface IProps {
+import imgIconLogout from './../../../assets/images/icons/icon-logout.png'
 
-}
+export const DashboardPage: React.FC = () => {
 
-export const DashboardPage: React.FC<IProps> = () => {
+  const {data, loading, error} = useQuery<IQueryDashboard>(QUERY_DASHBOARD)
+  const navigate = useNavigate()
 
-  // const {data, loading, error} = useQuery(QUERY_DASHBOARD)
-  // if(error) return <div>Error!</div>
-  // if(loading) return <div>Loading...</div>
-  //
-  // console.log(data)
+  if(error) return <div className={styles.root}>Error!</div>
+  if(loading || !data) return <div className={styles.root}>Loading...</div>
 
-  return <div>
+  const logout = () => {
+    localStorage.removeItem('token')
+    navigate('/login', {replace: true})
+  }
+
+  return <div className={styles.root}>
+    <header className={styles.header}>
+      <span>Сводка</span>
+      <button className={styles.btnLogout} onClick={logout}>
+        <img src={imgIconLogout} alt="Выход"/>
+      </button>
+    </header>
     <div className={styles.diagrams}>
-      <TestDiagram title={'Сценарии'} active={78} completed={78} inactive={42}/>
-      <TestDiagram title={'Списки'} active={78} completed={78} inactive={42}/>
-      <TestDiagram title={'Диалоги'} active={78} completed={78} inactive={42}/>
+      <Diagram title={'Сценарии'} {...data.dashboard.scenarios}/>
+      <Diagram title={'Списки'} {...data.dashboard.lists}/>
+      <Diagram title={'Диалоги'} {...data.dashboard.dialogs}/>
     </div>
   </div>
 }

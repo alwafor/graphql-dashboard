@@ -17,5 +17,3 @@ export const client = new ApolloClient({
   link: concat(authMiddleware, httpLink),
   cache: new InMemoryCache()
 });
-
-console.log(localStorage.getItem('token'))

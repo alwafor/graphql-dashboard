@@ -1,3 +1,5 @@
+@import "reset.css";
+
 html, body {
   min-height: 100%;
 }
@@ -13,9 +15,17 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 :root {
   --color-primary: #fdd07c;
   --color-primary-dark: #f9a752;
+  --color-primary-light: #FFF2D1;
+  --color-primary-bright: #f48745;
 
   --color-secondary: #d0cbd6;
   --color-secondary-light: #f2f0f5;

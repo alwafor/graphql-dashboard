@@ -1,12 +1,13 @@
 import React from 'react'
-import styles from './App.module.css'
+import styles from './index.module.css'
+
 import {Route, Routes} from 'react-router-dom'
-import {LoginPage} from './components/pages/login'
-import {RequireAuth} from './components/utils/require-auth'
-import {DashboardPage} from './components/pages/dashboard'
+import {RequireAuth} from '../utils/require-auth'
 
-function App() {
+import {LoginPage} from '../pages/login'
+import {DashboardPage} from '../pages/dashboard'
 
+const App: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <Routes>

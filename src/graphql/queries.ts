@@ -1,5 +1,21 @@
 import {gql} from '@apollo/client'
 
+export interface IStatistic {
+  active: number
+  inactive: number
+  completed: number
+}
+
+export type IStatisticKeys = keyof IStatistic
+
+export interface IQueryDashboard {
+  dashboard: {
+    scenarios: IStatistic
+    lists: IStatistic
+    dialogs: IStatistic
+  }
+}
+
 export const QUERY_ME = gql`
   query Me {
     me {
@@ -30,17 +46,3 @@ export const QUERY_DASHBOARD = gql`
     }
   }
 `
-
-export interface IStatistic {
-  active: number
-  inactive: number
-  completed: number
-}
-
-export interface IQueryDashboard {
-  dashboard: {
-    scenarios: IStatistic
-    lists: IStatistic
-    dialogs: IStatistic
-  }
-}

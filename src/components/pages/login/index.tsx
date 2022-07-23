@@ -7,7 +7,7 @@ import {Navigate} from 'react-router-dom'
 
 export const LoginPage: React.FC = () => {
 
-  const {data: dataMe, loading: loadingMe} = useQuery(QUERY_ME)
+  const {data: dataMe, loading: loadingMe} = useQuery(QUERY_ME, {fetchPolicy: 'no-cache'})
 
   const [login, {
     data: dataLogin,
@@ -45,11 +45,24 @@ export const LoginPage: React.FC = () => {
     <h2 className={styles.title}>Вход</h2>
     <p className={styles.paragraph}>Уникальная технология доступна для вашего бизнеса прямо сейчас!</p>
 
-    <input className={styles.input} maxLength={60} type="text" placeholder={'Логин'} value={inputLoginValue}
-           onChange={e => setInputLoginValue(e.target.value)}/>
+    <input
+      className={styles.input}
+      type="text"
+      maxLength={60}
+      placeholder={'Логин'}
 
-    <input className={styles.input} type="password" placeholder={'Пароль'} value={inputPasswordValue}
-           onChange={e => setInputPasswordValue(e.target.value)}/>
+      value={inputLoginValue}
+      onChange={e => setInputLoginValue(e.target.value)}
+    />
+
+    <input
+      className={styles.input}
+      type="password"
+      placeholder={'Пароль'}
+
+      value={inputPasswordValue}
+      onChange={e => setInputPasswordValue(e.target.value)}
+    />
 
     <div className={styles.notification}>{formNotification()}</div>
     <button className={styles.button} onClick={handleLoginButtonClick}>Войти</button>
