@@ -18,9 +18,9 @@ export const Diagram: React.FC<IProps> = ({title, ...props}) => {
   const [currentValue, setCurrentValue] = useState<IStatisticKeys | 'sum'>('sum')
   const [isAllSelected, setIsAllSelected] = useState(false)
 
-  const activeOffset = useMemo(() => Math.floor(values.active / values.sum * 100), [values.active, values.sum])
-  const inactiveOffset = useMemo(() => Math.floor(values.inactive / values.sum * 100), [values.inactive, values.sum])
-  const completedOffset = useMemo(() => Math.floor(values.completed / values.sum * 100), [values.completed, values.sum])
+  const activeOffset = useMemo(() => values.active / values.sum * 100, [values.active, values.sum])
+  const inactiveOffset = useMemo(() => values.inactive / values.sum * 100, [values.inactive, values.sum])
+  const completedOffset = useMemo(() => values.completed / values.sum * 100, [values.completed, values.sum])
 
   const createMouseHandlers = (value: IStatisticKeys | 'sum') => ({
     onMouseEnter: () => setCurrentValue(value),
